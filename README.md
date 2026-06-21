@@ -60,4 +60,70 @@ The project follows a modular architecture with separate frontend and backend la
 
 ---
 
+
+---
+
+## System Architecture
+
+The application is built using a client-server architecture:
+
+- Frontend handles user interface and routing
+- Backend manages API requests and business logic
+- MongoDB stores user and URL data
+- Redis is used for caching frequently accessed data
+- Swagger provides API documentation and testing interface
+
+---
+
+## API Features
+
+- User authentication APIs
+- URL creation and management APIs
+- Redirect handling for short URLs
+- Analytics tracking APIs
+- URL status management (enable/disable/delete)
+
+---
 ## Project Structure
+
+
+URL-SHORTENER/
+│
+├── config/
+│ ├── redis.js
+│ ├── swagger.js
+│
+├── connections/
+│ ├── user.js
+│
+├── controller/
+│ ├── url.js
+│ ├── user.js
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── login.jsx
+│ │ │ ├── signup.jsx
+│ │ │ ├── resetpass.jsx
+│ │ │
+│ │ ├── pages/
+│ │ │ ├── Dashboard.js
+│ │ │ ├── CreateURL.js
+│ │ │ ├── Updateurl.js
+│ │ │ ├── Deleteurl.js
+│ │ │ ├── Disableurl.js
+│ │ │ ├── Analytics.js
+│ │ │ ├── AliasUrl.js
+│ │ │ ├── MyURLs.js
+│ │ │ ├── QRCodePage.js
+│ │ │ ├── Logout.js
+│ │ │ ├── ProtectedAccess.js
+│ │ │
+│ │ ├── App.js
+│ │ ├── index.js
+│
+├── public/
+├── package.json
+└── README.md
+
