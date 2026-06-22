@@ -1,6 +1,6 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
-const { setUser } = require("../services/auth");
+const { setUser } = require("../utils/backend/services/auth");
 // const crypto = require("crypto");
 
 
@@ -87,66 +87,37 @@ async function handleuserLogout(req, res) {
 }
 const crypto = require("crypto");
 
-// async function forgotPassword(req, res) {
-//   try {
-//     const { email } = req.body;
+async function forgotPassword(req, res) {
+  try {
+    const { email } = req.body;
 
-//     const user = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-//     if (!user) {
-//       return res.status(404).send("User not found");
-//     }
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
 
-//     // generate 6 digit OTP
-//     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    // generate 6 digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-//     user.otp = otp;
-//     user.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 min
+    user.otp = otp;
+    user.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 min
 
-//     await user.save();
+    await user.save();
 
-//     // 👉 (normally email send hota hai, abhi response me bhej rahe)
-//     return res.json({
-//       message: "OTP sent successfully",
-//       otp: otp, // remove in production
-//     });
+    // 👉 (normally email send hota hai, abhi response me bhej rahe)
+    return res.json({
+      message: "OTP sent successfully",
+      otp: otp, // remove in production
+    });
 
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).send("Error in forgot password");
-//   }
-// }
-async function forgotPassword(req, res){
-  const { email } = req.body;
-
-  const user = await User.findOne({ email });
-  if (!user) return res.status(404).json({ message: "User not found" });
-
-  const otp = crypto.randomInt(100000, 999999).toString();
-
-  await redisClient.set(email, otp, {
-    EX: 300, // 5 min expiry
-  });
-
-  await sendEmail(email, "OTP for Password Reset", `Your OTP is ${otp}`);
-
-  res.json({ message: "OTP sent to email" });
-};
-async function verifyOtp(req, res){
-  const { email, otp } = req.body;
-
-  const storedOtp = await redisClient.get(email);
-
-  if (!storedOtp) {
-    return res.status(400).json({ message: "OTP expired" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Error in forgot password");
   }
+}
 
-  if (storedOtp !== otp) {
-    return res.status(400).json({ message: "Invalid OTP" });
-  }
 
-  res.json({ message: "OTP verified" });
-};
 async function resetPassword(req, res){
   const { email, newPassword } = req.body;
 
@@ -169,5 +140,5 @@ module.exports = {
   handleuserLogout,
   resetPassword,
   forgotPassword,
-  verifyOtp
+
 };  
