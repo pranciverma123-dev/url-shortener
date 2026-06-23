@@ -37,7 +37,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://url-shortener-yijl-ie3mbpacr-pranciverma123-devs-projects.vercel.app",
+      "https://url-shortener-24gc-cyqtsdvu1-pranciverma123-devs-projects.vercel.app",
     ],
     credentials: true,
   })
