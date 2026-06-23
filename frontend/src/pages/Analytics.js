@@ -137,13 +137,12 @@ function Analytics() {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        `http://localhost:8000/url/analytics/${shortId}`,
-        {
-          credentials: "include",
-        }
-      );
-
+     const res = await fetch(
+  `https://url-shortener-kl3i.onrender.com/url/analytics/${shortId}`,
+  {
+    credentials: "include",
+  }
+);
       const result = await res.json();
 
       if (!res.ok) {
@@ -172,7 +171,7 @@ function Analytics() {
         {/* Header */}
         <div className="bg-slate-900/80 backdrop-blur-lg border border-slate-800 rounded-3xl p-8 mb-8">
           <h1 className="text-4xl font-bold mb-2">
-            📊 URL Analytics Dashboard
+            URL Analytics Dashboard
           </h1>
 
           <p className="text-slate-400">
@@ -241,7 +240,7 @@ function Analytics() {
               {/* Browser Stats */}
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
                 <h3 className="text-2xl font-semibold mb-4">
-                  🌐 Browser Stats
+                  Browser Stats
                 </h3>
 
                 {Object.entries(data.browserStats || {}).map(
@@ -260,7 +259,7 @@ function Analytics() {
               {/* Device Stats */}
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
                 <h3 className="text-2xl font-semibold mb-4">
-                  💻 Device Stats
+                  Device Stats
                 </h3>
 
                 {Object.entries(data.deviceStats || {}).map(
@@ -279,7 +278,7 @@ function Analytics() {
               {/* OS Stats */}
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
                 <h3 className="text-2xl font-semibold mb-4">
-                  🖥️ OS Statistics
+                   OS Statistics
                 </h3>
 
                 {Object.entries(data.osStats || {}).map(
@@ -298,7 +297,7 @@ function Analytics() {
               {/* Country Stats */}
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
                 <h3 className="text-2xl font-semibold mb-4">
-                  🌍 Country Statistics
+                   Country Statistics
                 </h3>
 
                 {Object.entries(data.countryStats || {}).map(
@@ -319,7 +318,7 @@ function Analytics() {
             {/* City Stats */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
               <h3 className="text-2xl font-semibold mb-4">
-                🏙️ City Statistics
+                 City Statistics
               </h3>
 
               {Object.entries(data.cityStats || {}).map(
@@ -339,7 +338,7 @@ function Analytics() {
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
 
               <h3 className="text-2xl font-semibold mb-6">
-                📜 Visit History
+                 Visit History
               </h3>
 
               <div className="overflow-x-auto">

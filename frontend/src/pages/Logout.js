@@ -10,7 +10,7 @@ function Logout() {
       setLoading(true);
 
       const res = await fetch(
-        "http://localhost:8000/user/logout",
+        "https://url-shortener-kl3i.onrender.com/user/logout",
         {
           method: "POST",
           credentials: "include",
@@ -42,7 +42,7 @@ function Logout() {
         <div className="text-center">
 
           <div className="text-6xl mb-4">
-            🚪
+            
           </div>
 
           <h1 className="text-4xl font-bold mb-3">
@@ -60,7 +60,7 @@ function Logout() {
               disabled={loading}
               className="w-full py-4 rounded-xl font-semibold bg-gradient-to-r from-red-500 to-pink-600 hover:scale-[1.02] transition-all duration-300 shadow-lg disabled:opacity-50"
             >
-              {loading ? "Logging Out..." : "🚪 Logout"}
+              {loading ? "Logging Out..." : " Logout"}
             </button>
 
             <button

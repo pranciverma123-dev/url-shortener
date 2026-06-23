@@ -61,7 +61,7 @@ export default function QRCodeSection() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:8000/url/qr/${shortId}`,
+        `https://url-shortener-kl3i.onrender.com/url/qr/${shortId}`,
         {
           credentials: "include",
         }
@@ -92,7 +92,7 @@ export default function QRCodeSection() {
       <div className="relative w-full max-w-md bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl">
 
         <h2 className="text-3xl font-bold text-white text-center mb-2">
-          📱 Generate QR Code
+           Generate QR Code
         </h2>
 
         <p className="text-slate-400 text-center mb-6">
@@ -126,7 +126,7 @@ export default function QRCodeSection() {
             </div>
 
             <p className="mt-4 text-green-400 font-medium">
-              ✅ QR Generated Successfully
+              QR Generated Successfully
             </p>
           </div>
         )}

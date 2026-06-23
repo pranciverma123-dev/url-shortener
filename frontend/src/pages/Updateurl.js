@@ -79,7 +79,7 @@ function UpdateURL() {
 
       setLoading(true);
 
-      const res = await fetch(`http://localhost:8000/url/${id}`, {
+      const res = await fetch(`https://url-shortener-kl3i.onrender.com/url/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ function UpdateURL() {
         throw new Error(data.message || "Server Error");
       }
 
-      alert("✅ URL Updated Successfully");
+      alert("URL Updated Successfully");
 
       setId("");
       setRedirectURL("");
@@ -116,7 +116,7 @@ function UpdateURL() {
       <div className="relative w-full max-w-md bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl">
 
         <h2 className="text-3xl font-bold text-center text-white mb-2">
-          🔄 Update URL
+          Update URL
         </h2>
 
         <p className="text-center text-slate-400 mb-6">

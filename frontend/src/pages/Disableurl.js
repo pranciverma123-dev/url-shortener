@@ -49,7 +49,7 @@ function DisableURL() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:8000/url/disable/${id}`,
+        `https://url-shortener-kl3i.onrender.com/url/disable/${id}`,
         {
           method: "PATCH",
           credentials: "include",
@@ -59,7 +59,7 @@ function DisableURL() {
       const data = await res.json();
 
       if (res.ok) {
-        alert("✅ Link Disabled Successfully");
+        alert(" Link Disabled Successfully");
         setId("");
       } else {
         alert(data.message);
@@ -84,7 +84,7 @@ function DisableURL() {
         <div className="text-center mb-8">
 
           <div className="text-6xl mb-3">
-            ⛔
+            
           </div>
 
           <h1 className="text-4xl font-bold">
@@ -112,14 +112,14 @@ function DisableURL() {
             disabled={loading}
             className="w-full py-4 rounded-xl font-semibold bg-gradient-to-r from-yellow-500 to-orange-600 hover:scale-[1.02] transition-all duration-300 shadow-lg disabled:opacity-50"
           >
-            {loading ? "Disabling..." : "⛔ Disable URL"}
+            {loading ? "Disabling..." : " Disable URL"}
           </button>
 
         </div>
 
         <div className="mt-6 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
           <p className="text-yellow-300 text-sm">
-            ⚠️ Disabled URLs won't redirect users until re-enabled.
+            Disabled URLs won't redirect users until re-enabled.
           </p>
         </div>
 

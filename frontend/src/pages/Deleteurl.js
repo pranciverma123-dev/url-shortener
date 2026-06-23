@@ -45,7 +45,7 @@ function DeleteURL() {
 
   const deleteURL = async () => {
     const res = await fetch(
-      `http://localhost:8000/url/${id}`,
+`https://url-shortener-kl3i.onrender.com/url/${id}`,
       {
         method: "DELETE",
         credentials: "include",

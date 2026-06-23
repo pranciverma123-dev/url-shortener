@@ -9,22 +9,27 @@ function Login() {
 
   const login = async () => {
     try {
-      const res = await fetch("http://localhost:8000/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const res = await fetch(
+        "https://url-shortener-kl3i.onrender.com/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
       if (res.ok) {
+        alert("Login Successful");
         navigate("/Dash");
       } else {
-        alert("Login Failed");
+        const msg = await res.text();
+        alert(msg || "Login Failed");
       }
     } catch (err) {
       console.log(err);
@@ -35,7 +40,6 @@ function Login() {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
       
-      {/* Background Effects */}
       <div className="absolute w-96 h-96 bg-blue-600/20 blur-3xl rounded-full top-10 left-10"></div>
       <div className="absolute w-96 h-96 bg-purple-600/20 blur-3xl rounded-full bottom-10 right-10"></div>
 
@@ -101,3 +105,4 @@ function Login() {
 }
 
 export default Login;
+

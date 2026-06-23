@@ -8,7 +8,7 @@ function MyURLs() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/url/my-urls", {
+    fetch("https://url-shortener-kl3i.onrender.com/url/my-urls", {
       method: "GET",
       credentials: "include",
     })
@@ -46,7 +46,7 @@ function MyURLs() {
       `http://localhost:8000/${shortId}`
     );
 
-    alert("Link Copied 🚀");
+    alert("Link Copied ");
   };
 
   if (loading) {

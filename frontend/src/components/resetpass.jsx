@@ -10,7 +10,7 @@ function ResetPassword() {
   const reset = async () => {
     try {
       const res = await fetch(
-        "http://localhost:8000/user/reset-password",
+        "https://url-shortener-kl3i.onrender.com/user/reset-password",
         {
           method: "PUT",
           headers: {

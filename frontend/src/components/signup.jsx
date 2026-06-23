@@ -11,24 +11,28 @@ function Signup() {
 
   const signup = async () => {
     try {
-      const res = await fetch("http://localhost:8000/user/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname,
-          lastname,
-          email,
-          password,
-        }),
-      });
+      const res = await fetch(
+        "https://url-shortener-kl3i.onrender.com/user/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname,
+            lastname,
+            email,
+            password,
+          }),
+        }
+      );
 
       if (res.ok) {
         alert("Signup Successful");
         navigate("/Dash");
       } else {
-        alert(await res.text());
+        const msg = await res.text();
+        alert(msg || "Signup Failed");
       }
     } catch (err) {
       console.log(err);
@@ -39,7 +43,6 @@ function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 px-4 relative overflow-hidden">
 
-      {/* Glow Effects */}
       <div className="absolute w-[500px] h-[500px] bg-blue-500/20 blur-3xl rounded-full -top-40 -left-40"></div>
       <div className="absolute w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full -bottom-40 -right-40"></div>
 
@@ -48,8 +51,6 @@ function Signup() {
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-[0_0_60px_rgba(99,102,241,0.3)]">
 
           <div className="text-center mb-8">
-            <div className="text-5xl mb-3"></div>
-
             <h1 className="text-4xl font-bold text-white">
               Create Account
             </h1>
@@ -99,6 +100,7 @@ function Signup() {
             >
               Create Account
             </button>
+
           </div>
 
           <div className="text-center mt-6 text-slate-400">

@@ -15,7 +15,7 @@ function ProtectedAccess() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:8000/url/access/${shortId}`,
+        `https://url-shortener-kl3i.onrender.com/url/access/${shortId}`,
         {
           method: "POST",
           headers: {
@@ -55,7 +55,7 @@ function ProtectedAccess() {
         <div className="text-center mb-8">
 
           <div className="text-6xl mb-4">
-            🔐
+            
           </div>
 
           <h1 className="text-4xl font-bold">
@@ -94,7 +94,7 @@ function ProtectedAccess() {
           >
             {loading
               ? "Opening Protected URL..."
-              : "🔓 Open Protected URL"}
+              : " Open Protected URL"}
           </button>
 
         </div>
