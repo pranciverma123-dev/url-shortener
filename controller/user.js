@@ -1,6 +1,6 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
-const { setUser } = require("../utils/backend/services/auth");
+const { setUser } = require("../services/auth");
 // const crypto = require("crypto");
 
 

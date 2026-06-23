@@ -46,7 +46,7 @@ function Login() {
       <div className="relative w-full max-w-md bg-slate-900/80 backdrop-blur-lg border border-slate-800 rounded-3xl p-8 shadow-2xl">
 
         <h1 className="text-4xl font-bold text-white text-center">
-          Welcome Back 👋
+          Welcome Back 
         </h1>
 
         <p className="text-slate-400 text-center mt-2 mb-8">

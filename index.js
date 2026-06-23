@@ -4,7 +4,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const rateLimit = require("express-rate-limit");
 
 const swaggerUi = require("swagger-ui-express");
@@ -15,78 +14,57 @@ const urlRoutes = require("./routes/url");
 
 const app = express();
 
-// MongoDB Connection
-
 mongoose
-  .connect("mongodb://127.0.0.1:27017/back")
-  .then(() =>
-    console.log("MongoDB Connected")
+  .connect(
+    "mongodb+srv://pranciverma123_db_user:Jac8NQKOJ1rtVmEQ@cluster0.qejgodr.mongodb.net/back?retryWrites=true&w=majority"
   )
-  .catch((err) =>
-    console.log(err)
-  );
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log("MongoDB Error:", err));
 
-// Rate Limiter
+
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-
   max: 100,
-
   standardHeaders: true,
-
   legacyHeaders: false,
-
-  message: {
-    message:
-      "Too many requests, please try again later",
-  },
+  message: { message: "Too many requests, please try again later" },
 });
 
-// Middleware
+
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://url-shortener-yijl-ie3mbpacr-pranciverma123-devs-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
 
 app.use(express.json());
-
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
-
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(limiter);
 
-// Swagger
 
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec)
-);
 
-// Routes
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 app.use("/user", userRoutes);
-
 app.use("/url", urlRoutes);
 
-// Home Route
+
 
 app.get("/", (req, res) => {
-  res.send("Server Running");
+  res.send("Server Running 🚀");
 });
 
-// Server
 
-app.listen(8000, () => {
-  console.log(
-    "Server Started on Port 8000"
-  );
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server Started on Port ${PORT}`);
 });

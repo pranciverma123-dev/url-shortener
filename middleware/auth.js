@@ -1,4 +1,4 @@
-const { getUser } = require("../utils/backend/services/auth");
+const { getUser } = require("../services/auth");
 
 function restrictToLoggedInUserOnly(req, res, next) {
   const authHeader = req.headers.authorization;
