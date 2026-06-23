@@ -11,7 +11,7 @@ function Signup() {
 
   const signup = async () => {
     try {
-      const res = await fetch(
+ const res = await fetch(
         "https://url-shortener-kl3i.onrender.com/user/signup",
         {
           method: "POST",
